@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KOMYUNITEH</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- FRONT PAGE -->
+<div id="pageHome" class="page active">
+    <div class="hero">
+        <h1>PASKOMYUNITY</h1>
+        <p class="subtitle">🎄YOUR CHRISTMAS CONNECTION BESTIE🎄</p>
+        <div class="front-buttons">
+            <button id="btnFrontUser" class="btn">USER</button>
+            <button id="btnFrontAdmin" class="btn">ADMIN</button>
+        </div>
+    </div>
+</div>
+
+<!-- USER LOGIN -->
+<div id="pageUserLogin" class="page">
+    <div class="login-container">
+        <label for="userEmail">EMAIL:</label>
+        <input type="email" id="userEmail" placeholder="Enter your email">
+        <label for="userPassword">PASSWORD:</label>
+        <input type="password" id="userPassword" placeholder="Enter your password">
+        <button id="userLoginBtn" class="btn">LOGIN</button>
+        <button id="userBackBtn" class="btn">BACK</button>
+        <p id="userLoginError" class="error-msg"></p>
+    </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="pageAdminLogin" class="page">
+    <div class="login-container">
+        <label for="adminEmail">ADMIN EMAIL:</label>
+        <input type="email" id="adminEmail" placeholder="Enter your admin email">
+        <label for="adminPassword">PASSWORD:</label>
+        <input type="password" id="adminPassword" placeholder="Enter your password">
+        <button id="adminLoginBtn" class="btn">LOGIN</button>
+        <button id="adminBackBtn" class="btn">BACK</button>
+        <p id="adminLoginError" class="error-msg"></p>
+    </div>
+</div>
+
+<!-- USER DASHBOARD -->
+<div id="pageUserArea" class="page">
+    <div class="dashboard">
+        <div class="nav-left">
+            <button id="uGeneralBtn" class="btn">General Chat</button>
+            <button id="uAnnouncementsBtn" class="btn">Announcements</button>
+            <button id="uCommunityBtn" class="btn">Community Members</button>
+            <button id="uReportsBtn" class="btn">Incident Reports</button>
+            <button id="uProfileBtn" class="btn">Profile Settings</button>
+            <button id="userSignOut" class="logout-btn">Logout</button>
+        </div>
+        <div class="content-area" id="userContent"></div>
+    </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div id="pageAdminArea" class="page">
+    <div class="dashboard">
+        <div class="nav-left">
+            <button id="aGeneralBtn" class="btn">Manage General Chat</button>
+            <button id="aAnnouncementsBtn" class="btn">Manage Announcements</button>
+            <button id="aCommunityBtn" class="btn">Community Members</button>
+            <button id="aReportsBtn" class="btn">Review Reports</button>
+            <button id="adminSignOut" class="logout-btn">Logout</button>
+        </div>
+        <div class="content-area" id="adminContent"></div>
+    </div>
+</div>
+
+<script type="module" src="script-firebase.js"></script>
+</body>
+</html>
