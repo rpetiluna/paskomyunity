@@ -429,22 +429,26 @@ function userCommunity(container) {
 function adminCommunity(container) {
   container.innerHTML = '<h3>Community Members</h3>';
   const sorted = [...users].sort((a,b) => (Number(a.createdAt || 0) - Number(b.createdAt || 0)));
+
   sorted.forEach(u => {
     container.innerHTML += `
       <div class="member-item">
-        <img src="${escapeAttr(u.profile||'https://via.placeholder.com/50')}" width="50" height="50">
-        ${escapeHtml(u.username)} ${u.name ? '('+escapeHtml(u.name)+')' : ''}
-        <button class="banBtn" data-key="${u.key}">${u.banned?'Unban':'Ban'}</button>
+        <img src="${escapeAttr(u.profile || 'https://via.placeholder.com/50')}" width="50" height="50">
+        ${escapeHtml(u.username)} ${u.name ? '(' + escapeHtml(u.name) + ')' : ''}
+        <button class="deleteUserBtn" data-key="${u.key}">Delete</button>
         <small class="dev-key">ID: ${escapeHtml(u.key)}</small>
       </div>
     `;
   });
-  container.querySelectorAll('.banBtn').forEach(btn => {
+
+  container.querySelectorAll('.deleteUserBtn').forEach(btn => {
     btn.onclick = async () => {
       const key = btn.dataset.key;
-      const u = users.find(x=>x.key===key);
-      if (!u) return;
-      await update(ref(db, `users/${key}`), { banned: !u.banned });
+      if (!confirm("Are you sure you want to DELETE this user permanently?")) return;
+
+      await remove(ref(db, `users/${key}`));
+
+      alert("User deleted successfully.");
     };
   });
 }
@@ -491,3 +495,4 @@ function reviewReports(container) {
   ['uGeneralBtn','uAnnouncementsBtn','uCommunityBtn','uReportsBtn','uProfileBtn','aGeneralBtn','aAnnouncementsBtn','aCommunityBtn','aReportsBtn']
     .forEach(id => { const el = document.getElementById(id); if(el&&!el.onclick) el.onclick=()=>{}; });
 })();
+
